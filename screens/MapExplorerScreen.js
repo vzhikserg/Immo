@@ -3,6 +3,9 @@ import { StyleSheet, View, Button } from 'react-native';
 
 import MapExplorer from '../components/MapExplorer'
 import OverlayPanel from '../components/OverlayPanel';
+import RangeSlider from 'react-native-range-slider';
+
+
 
 export default class MapExplorerScreen extends React.Component {
 
@@ -39,10 +42,22 @@ export default class MapExplorerScreen extends React.Component {
 			return null;
 		}
 
+		
 		return (
 			<View style={styles.filterPanel}>
             <OverlayPanel>
-              <Button title="Filter Knob" onPress={() => {}}></Button>            
+              <Button title="Filter Knob" onPress={() => {}}></Button>     
+							<RangeSlider
+								minValue={0}
+								maxValue={100}
+								tintColor={'#da0f22'}
+								handleBorderWidth={1}
+								handleBorderColor="#454d55"
+								selectedMinimum={20}
+								selectedMaximum={40}
+								style={{ flex: 1, height: 70, padding: 10, backgroundColor: '#ddd' }}
+								onChange={ (data)=>{ console.log(data);} }
+							/>       
               <Button title="Close" onPress={() => this._toggleFilterPanel()}></Button>            
             </OverlayPanel>
       </View>
@@ -58,10 +73,7 @@ export default class MapExplorerScreen extends React.Component {
 		
 	  return (
 			<View style={styles.container}>        
-				<MapExplorer 
-				style={styles.mapStyle}
-				onMarkerPress={() => {this.props.navigation.navigate('HouseInfo')}}
-				></MapExplorer>
+				<MapExplorer style={styles.mapStyle} onMarkerPress={() => {this.props.navigation.navigate('HouseInfo')}}></MapExplorer>
 				<View style={styles.topBar}>
 					<Button 
 					onPress={() => this._toggleFilterPanel()} 
