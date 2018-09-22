@@ -5,6 +5,8 @@ import MapExplorer from '../components/MapExplorer';
 import OverlayPanel from '../components/OverlayPanel';
 import RangeSlider from 'react-native-range-slider';
 
+import houses from '../houses';
+
 export default class MapExplorerScreen extends React.Component {
 	constructor() {
 		super();
@@ -17,7 +19,8 @@ export default class MapExplorerScreen extends React.Component {
 
 	_getInitialState() {
 		return {
-			showFilterPanel: false
+			showFilterPanel: false,
+			houses: houses
 		};
 	}
 
@@ -84,6 +87,7 @@ export default class MapExplorerScreen extends React.Component {
 					onMarkerPress={() => {
 						this.props.navigation.navigate('HouseInfo');
 					}}
+					houses={this.state.houses}
 				/>
 				<View style={styles.topBar}>
 					<Button

@@ -4,6 +4,12 @@ import HouseInfoTabs from '../components/HouseInfoTabs';
 import ImageSlider from 'react-native-image-slider';
 
 class HouseInfo extends React.Component {
+	static navigationOptions =({navigation}) => ({
+        headerTitle: "Villa Nuova"
+	})
+	// navigation.getParam('name')
+
+	
 	constructor(props) {
 		super(props);
 
