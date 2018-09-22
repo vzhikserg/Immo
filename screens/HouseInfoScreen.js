@@ -3,6 +3,24 @@ import { StyleSheet, Text, View, Button, Image, TouchableHighlight } from 'react
 import HouseInfoTabs from '../components/HouseInfoTabs';
 import ImageSlider from 'react-native-image-slider';
 
+// this data should come from bank's api 
+const images = [
+	require('../assets/house/1.jpg'), // 0
+	require('../assets/house/2.jpg'), // 1
+	require('../assets/house/3.jpg'), // 2
+	require('../assets/house/x/2/CasaDORO1.jpg'), // 3
+	require('../assets/house/x/2/CasaDORO2.jpg'), // 4
+	require('../assets/house/x/2/CasaDORO3.jpg'), // 5
+	require('../assets/house/x/3/CasaRosario1.jpg'), // 6
+	require('../assets/house/x/3/CasaRosario2.jpg'), // 7
+	require('../assets/house/x/3/CasaRosario3.jpg'), // 8
+	require('../assets/house/x/4FincaBianca.jpg'), // 9
+	require('../assets/house/x/5RossoAragosta.jpg'), // 10
+	require('../assets/house/x/6CasaDiGiuseppe.jpg'), // 11
+	require('../assets/house/x/7VillaDeiCampi.jpg'), // 12
+	require('../assets/house/x/8CasaModerna.jpg'), // 13
+];
+
 class HouseInfo extends React.Component {
 
 	static navigationOptions =({navigation}) => ({
@@ -15,17 +33,13 @@ class HouseInfo extends React.Component {
 	}
 
 	render() {
-		const images = [
-			require('../assets/house/1.jpg'),
-			require('../assets/house/2.jpg'),
-			require('../assets/house/3.jpg')
-		];
-
+		currentImages = images.filter((image, ind) => this.state.house.images.includes(ind));
 		return (
+
 			<View style={styles.container}>
 				<ImageSlider
 					loopBothSides
-					images={images}
+					images={ currentImages }
 					style={styles.slider}
 					customSlide={({ index, item, style, width }) => (
 						// It's important to put style here because it's got offset inside
@@ -35,7 +49,7 @@ class HouseInfo extends React.Component {
 					)}
 					customButtons={(position, move) => (
 						<View style={styles.buttons}>
-							{images.map((image, index) => {
+							{currentImages.map((image, index) => {
 								return (
 									<TouchableHighlight
 										key={index}										
