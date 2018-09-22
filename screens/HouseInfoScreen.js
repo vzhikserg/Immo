@@ -7,10 +7,10 @@ class HouseInfo extends React.Component {
 	static navigationOptions =({navigation}) => ({
         headerTitle: navigation.getParam('house').name
 	})
-	// navigation.getParam('name')
 	
 	constructor(props) {
-		super(props);
+		super(props);		 
+		this.state = { house: props.navigation.state.params.house};
 	}
 
 	render() {
@@ -48,7 +48,7 @@ class HouseInfo extends React.Component {
 						</View>
 					)}
 				/>
-				<HouseInfoTabs />
+				<HouseInfoTabs house={this.state.house}/>
 			</View>
 		);
 	}
