@@ -2,6 +2,9 @@ import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 import { Col, Row, Grid } from "react-native-easy-grid";
 
+const rand = (max, min = 0) =>
+  Math.floor(Math.random() * (max - min + 1)) + min;
+
 export default class SummaryTab extends React.Component {
 
     constructor(props) {
@@ -33,7 +36,7 @@ export default class SummaryTab extends React.Component {
                             <Text style={styles.text}>Credit period</Text>
                         </Col>
                         <Col>
-                            <Text style={styles.text}>300 months</Text>
+                            <Text style={styles.text}>{rand(350, 250)} months</Text>
                         </Col>
                     </Row>
                     <Row  style={styles.odd}>
@@ -41,7 +44,7 @@ export default class SummaryTab extends React.Component {
                             <Text style={styles.text}>Daily sunshine</Text>
                         </Col>
                         <Col>
-                            <Text style={styles.text}>5,4 hours</Text>
+                            <Text style={styles.text}>{rand(8, 5)} hours</Text>
                         </Col>
                     </Row>
                     <Row>
@@ -49,7 +52,7 @@ export default class SummaryTab extends React.Component {
                             <Text style={styles.text}>Supermarket</Text>
                         </Col>
                         <Col>
-                            <Text style={styles.text}>5 minutes</Text>
+                            <Text style={styles.text}>{rand(20, 3)} minutes</Text>
                         </Col>
                     </Row>
                     <Row  style={styles.odd}>
@@ -57,7 +60,7 @@ export default class SummaryTab extends React.Component {
                             <Text style={styles.text}>Bus lines</Text>
                         </Col>
                         <Col>
-                            <Text style={styles.text}>L17, U4</Text>
+                            <Text style={styles.text}>L{rand(25, 3)}, U{rand(25, 3)}</Text>
                         </Col>
                     </Row>
 
