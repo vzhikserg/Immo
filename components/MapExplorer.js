@@ -37,8 +37,6 @@ class MapExplorer extends React.Component {
 	            		<PriceMarker amount={house.price} />
     	      		</Marker>)
 				}
-                {/* {e => alert(e.nativeEvent)} */}
-								
 			</MapView>
 		);
 	}
