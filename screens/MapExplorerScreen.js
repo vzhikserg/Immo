@@ -7,15 +7,58 @@ import RangeSlider from 'react-native-range-slider';
 
 import houses from '../houses';
 
+export class  HeaderTitle extends React.Component {
+	constructor(props) {
+		super();
+		console.log("yooooooooooooooooooooooooolo");
+		console.log(props)
+	}
+	render() {
+		return (
+			<View style={{flex: 1, justifyContent: 'space-between', flexDirection: 'row'}}>
+				<Text>ImmoAgent</Text>
+				<Button title="yolo"></Button>
+				<Button title="yolo"></Button>
+				<Button title="yolo"></Button>
+				<Button title="yolo"></Button>
+				<Button title="yolo"></Button>
+				<Button title="yolo"></Button>
+				<Button title="yolo"></Button>
+				<Button title="yolo"></Button>
+				<Button title="yolo"></Button>
+				<Button title="yolo"></Button>
+				
+
+			</View>
+		);
+	}
+}
+
 export default class MapExplorerScreen extends React.Component {
 	constructor() {
 		super();
 		this.state = this._getInitialState();
+		
 	}
 
 	static navigationOptions = {
-		header: null
+		headerTitle: () => <HeaderTitle lala={this.props}/>,
+		headerTintColor: 'white',
+		headerStyle: {
+			backgroundColor: '#007F32',			
+		},
+		headerTitleStyle: {
+			fontWeight: 'bold'
+		}
 	};
+
+	/**
+	 * 
+	 * 
+	static navigationOptions =({navigation}) => ({
+        headerTitle: navigation.getParam('house').name
+	})
+	 */
 
 	_getInitialState() {
 		return {
@@ -114,13 +157,13 @@ const styles = StyleSheet.create({
 		textAlign: 'center'		
 	},
 	topBar: {
-		height: 70,
+		height: 10,
 		width: '100%',
 		justifyContent: 'flex-end',
 		alignItems: 'flex-end',
 		position: 'absolute',
 		paddingRight: 10,
-		zIndex: 2
+		zIndex: 4
 	},
 	topBarButton: {
 		color: '#ff0000',
