@@ -8,28 +8,59 @@ export default class App extends React.Component {
 
   constructor() {
     super();
-    
+    this.state = this.getInitialState();
   }
 
-  _click() {
-    Alert.alert('Sergiiiiiiiiiiiiii');
+  getInitialState() {
+    return {
+      showFilterPanel: false
+    };
+  }
+
+  _getFilterButtonLabel() {
+    if(this.state.showFilterPanel === true) {
+      return 'Close';
+    }
+    return 'Filter';
+  }
+
+  _toggleFilterPanel() {
+    this.setState({
+      ...this.state,
+      showFilterPanel: !this.state.showFilterPanel
+    });
+  }
+
+  _renderOverlayPanel(show) {
+    if(show) {
+      return (
+        <View style={styles.filterPanel}>
+            <OverlayPanel showPanel={show}>
+              <Button title="Hello" onPress={() => {}}></Button>            
+              <Button title="Close" onPress={() => this._toggleFilterPanel()}></Button>            
+            </OverlayPanel>
+        </View>
+      );
+    }else{
+      return null;
+    }
   }
 
   render() {
-
-
-
+    const { showFilterPanel } = this.state;
+    const filterButtonLabel = this._getFilterButtonLabel();
+    const renderOverlayPanel = this._renderOverlayPanel.bind(this);
     return (
       <View style={styles.container}>        
         <MapExplorer style={styles.mapStyle}></MapExplorer>
         <View style={styles.topBar}>
-          <Button onPress={() => this._click()} color="#007F32" title="MENU" style={styles.topBarButton}></Button>                  
-        </View>
-        
-        <OverlayPanel style={styles.filterPanel} showPanel={true}>
-          <Button title="Hello"></Button>            
-        </OverlayPanel>
-        
+          <Button 
+          onPress={() => this._toggleFilterPanel()} 
+          color="#007F32" 
+          title={filterButtonLabel}
+          style={styles.topBarButton}></Button>                  
+        </View>   
+        {renderOverlayPanel(showFilterPanel)}
       </View>
     );
 
@@ -73,6 +104,7 @@ const styles = StyleSheet.create({
     width: '100%',
     zIndex: 4,
     opacity: 0.9,
-    padding: 40
+    padding: 40,
+    top: 0
   }
 });

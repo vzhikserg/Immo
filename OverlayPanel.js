@@ -5,24 +5,11 @@ class OverlayPanel extends React.Component {
     
     constructor() {
         super();
-        this.state = this.getInitialState();
-    }
-
-    getInitialState() {
-        return {
-            showPanel: true
-        };
-    }
-
-    toggleShowPanel() {
-        this.setState({
-            showPanel: !this.state.showPanel
-        });
     }
 
     _renderPanel() {
-        
-        if(this.state.showPanel) {
+
+        if(this.props.showPanel) {
             const {children} = this.props;            
             return (
                 <View style={styles.container}>
@@ -35,8 +22,7 @@ class OverlayPanel extends React.Component {
         }
     }
 
-    render() {
-        
+    render() {        
         const component = this;
         return component._renderPanel();
     }
