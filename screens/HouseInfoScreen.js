@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
-
+import HouseInfoTabs from '../components/HouseInfoTabs'
 class HouseInfo extends React.Component {
 
 	constructor(props) {
@@ -9,12 +9,14 @@ class HouseInfo extends React.Component {
 		this.state = {
 		  amount: 99,
 		};
-	  }
+	}
 
 	render() {
+		console.log(this.state)
 		return (
       <View>
 				<Text>Hopala</Text>
+				<HouseInfoTabs />
 			</View>
 		);
 	}
