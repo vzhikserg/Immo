@@ -10,55 +10,44 @@ import houses from '../houses';
 export class  HeaderTitle extends React.Component {
 	constructor(props) {
 		super();
-		console.log("yooooooooooooooooooooooooolo");
-		console.log(props)
+		
 	}
 	render() {
 		return (
 			<View style={{flex: 1, justifyContent: 'space-between', flexDirection: 'row'}}>
-				<Text>ImmoAgent</Text>
-				<Button title="yolo"></Button>
-				<Button title="yolo"></Button>
-				<Button title="yolo"></Button>
-				<Button title="yolo"></Button>
-				<Button title="yolo"></Button>
-				<Button title="yolo"></Button>
-				<Button title="yolo"></Button>
-				<Button title="yolo"></Button>
-				<Button title="yolo"></Button>
-				<Button title="yolo"></Button>
-				
-
+				<Text>ImmoAgent</Text>				
 			</View>
 		);
 	}
 }
 
 export default class MapExplorerScreen extends React.Component {
-	constructor() {
-		super();
-		this.state = this._getInitialState();
-		
+	constructor(props) {
+		super(props);
+		this.state = this._getInitialState();		
 	}
 
-	static navigationOptions = {
-		headerTitle: () => <HeaderTitle lala={this.props}/>,
-		headerTintColor: 'white',
-		headerStyle: {
-			backgroundColor: '#007F32',			
-		},
-		headerTitleStyle: {
-			fontWeight: 'bold'
+	static navigationOptions = ({navigation}) =>  {		
+		return {
+			headerTitle: 'Hello World',
+			headerTintColor: 'white',
+			headerStyle: {
+				backgroundColor: '#007F32',			
+			},
+			headerTitleStyle: {
+				fontWeight: 'bold'
+			},
+			headerRight: (
+				<Button onPress={ navigation.getParam('togglePanel')}
+				title="Filter"
+				color="#007F32" />
+			)
 		}
-	};
+	} 
 
-	/**
-	 * 
-	 * 
-	static navigationOptions =({navigation}) => ({
-        headerTitle: navigation.getParam('house').name
-	})
-	 */
+	componentDidMount() {
+		this.props.navigation.setParams({ togglePanel: this._toggleFilterPanel.bind(this)})
+	}
 
 	_getInitialState() {
 		return {
@@ -131,15 +120,7 @@ export default class MapExplorerScreen extends React.Component {
 						this.props.navigation.navigate('HouseInfo', { house: house});
 					}}
 					houses={this.state.houses}
-				/>
-				<View style={styles.topBar}>
-					<Button
-						onPress={() => this._toggleFilterPanel()}
-						color="#007F32"
-						title={filterButtonLabel}
-						style={styles.topBarButton}
-					/>
-				</View>
+				/>				
 				{renderOverlayPanel()}
 			</View>
 		);
@@ -157,7 +138,7 @@ const styles = StyleSheet.create({
 		textAlign: 'center'		
 	},
 	topBar: {
-		height: 10,
+		height: 70,
 		width: '100%',
 		justifyContent: 'flex-end',
 		alignItems: 'flex-end',
