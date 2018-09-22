@@ -1,15 +1,23 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, Text, View, Button, TouchableOpacity } from 'react-native';
 import { Col, Row, Grid } from "react-native-easy-grid";
+import Modal from "react-native-modal";
 
 const rand = (max, min = 0) =>
-  Math.floor(Math.random() * (max - min + 1)) + min;
+    Math.floor(Math.random() * (max - min + 1)) + min;
 
 export default class SummaryTab extends React.Component {
 
     constructor(props) {
-		super(props);		 
-	}
+        super(props);
+        this.state = {
+            isModalBookmarkVisible: false
+        };
+
+    }
+
+    _toggleBookmarkModal = () =>
+        this.setState({ isModalBookmarkVisible: !this.state.isModalBookmarkVisible });
 
     render() {
         return (
@@ -23,7 +31,7 @@ export default class SummaryTab extends React.Component {
                             <Text style={[styles.text, { textDecorationLine: 'line-through', color: 'gray' }]}>870 EUR</Text>
                         </Col>
                     </Row>
-                    <Row  style={styles.odd}>
+                    <Row style={styles.odd}>
                         <Col>
                             <Text style={styles.text}>Monthly loan rate</Text>
                         </Col>
@@ -39,7 +47,7 @@ export default class SummaryTab extends React.Component {
                             <Text style={styles.text}>{rand(350, 250)} months</Text>
                         </Col>
                     </Row>
-                    <Row  style={styles.odd}>
+                    <Row style={styles.odd}>
                         <Col>
                             <Text style={styles.text}>Daily sunshine</Text>
                         </Col>
@@ -55,7 +63,7 @@ export default class SummaryTab extends React.Component {
                             <Text style={styles.text}>{rand(20, 3)} minutes</Text>
                         </Col>
                     </Row>
-                    <Row  style={styles.odd}>
+                    <Row style={styles.odd}>
                         <Col>
                             <Text style={styles.text}>Bus lines</Text>
                         </Col>
@@ -67,7 +75,7 @@ export default class SummaryTab extends React.Component {
                     <Row>
                         <Col>
                             <Button
-                                onPress={() => { }}
+                                onPress={() => { this._toggleBookmarkModal(); }}
                                 title="Add bookmark"
                                 style={styles.button}
                                 color="#007F32"
@@ -86,6 +94,16 @@ export default class SummaryTab extends React.Component {
                         </Col>
                     </Row>
                 </Grid>
+                <Modal style={styles.bottomModal} isVisible={this.state.isModalBookmarkVisible}>
+                    <View style={styles.modalContent}>
+                        <Text>We saved this bookmark for you</Text>
+                        <TouchableOpacity onPress={this._toggleBookmarkModal}>
+                            <View style={styles.buttonModal}>
+                                <Text style={{color:'white'}}>CLOSE</Text>
+                            </View>
+                        </TouchableOpacity>
+                    </View>
+                </Modal>
             </View>
         )
     }
@@ -96,16 +114,37 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     odd: {
-      backgroundColor: '#eee'
+        backgroundColor: '#eee'
     },
     text: {
         fontSize: 12,
         paddingLeft: 24,
         paddingBottom: 12,
-        paddingTop: 12   
+        paddingTop: 12
     },
     button: {
         padding: 24,
         borderRadius: 0
-    }
+    },
+    bottomModal: {
+        justifyContent: "flex-end",
+        margin: 0
+    },
+    buttonModal: {
+        backgroundColor:'#007F32',
+        padding: 12,
+        margin: 16,
+        justifyContent: "center",
+        alignItems: "center",
+        borderRadius: 4,
+        borderColor: "rgba(0, 0, 0, 0.1)"
+    },
+    modalContent: {
+        backgroundColor: "white",
+        padding: 22,
+        justifyContent: "center",
+        alignItems: "center",
+        borderRadius: 4,
+        borderColor: "rgba(0, 0, 0, 0.1)"
+      },
 })
