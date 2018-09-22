@@ -6,31 +6,40 @@ import { Marker } from 'react-native-maps';
 
 import PriceMarker from './PriceMarker'
 
+const renderMarkers = ({ item }) => <Row {...item} 
+    onSelectContact={(contact) => props.onSelectContact(contact)} />;
+
 class MapExplorer extends React.Component {
 
 	constructor(props) {
 		super(props);
         this.state = {amount: 99};
-	  }
+	}
 
 	render() {
 		return (
             <MapView	
-            style={styles.container}			
+            	style={styles.container}			
 				initialRegion={{
-					latitude: 37.78825,
-					longitude: -122.4324,
-					latitudeDelta: 0.0922,
-					longitudeDelta: 0.0421
+					latitude: 45.5553534,
+					longitude: 10.5385776,
+					latitudeDelta: 0.0322,
+					longitudeDelta: 0.0251
 				}}>
-                {/* {e => alert(e.nativeEvent)} */}
-				<Marker onPress= { this.props.onMarkerPress}
+
+				{
+					this.props.houses.map(house => 
+					<Marker key={house.key} 
+						onPress= { house.onMarkerPress}
 						coordinate={{
-						latitude: 37.78825,
-						longitude: -122.4324,
+						latitude: house.location.latitude,
+						longitude: house.location.longitude,
 					}}>
-            		<PriceMarker amount={this.state.amount} />
-          		</Marker>				
+	            		<PriceMarker amount={house.price} />
+    	      		</Marker>)
+				}
+                {/* {e => alert(e.nativeEvent)} */}
+								
 			</MapView>
 		);
 	}
