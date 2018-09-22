@@ -4,14 +4,20 @@ import HouseInfoTabs from '../components/HouseInfoTabs';
 import ImageSlider from 'react-native-image-slider';
 
 class HouseInfo extends React.Component {
+	static navigationOptions = ({ navigation }) => ({
+		headerTitle: navigation.getParam('house').name,
+		headerTintColor: 'white',
+		headerStyle: {
+			backgroundColor: '#007F32'
+		},
+		headerTitleStyle: {
+			fontWeight: 'bold'
+		}
+	});
 
-	static navigationOptions =({navigation}) => ({
-        headerTitle: navigation.getParam('house').name
-	})
-	
 	constructor(props) {
-		super(props);		 
-		this.state = { house: props.navigation.state.params.house};
+		super(props);
+		this.state = { house: props.navigation.state.params.house };
 	}
 
 	render() {
@@ -37,19 +43,17 @@ class HouseInfo extends React.Component {
 						<View style={styles.buttons}>
 							{images.map((image, index) => {
 								return (
-									<TouchableHighlight
-										key={index}										
-										onPress={() => move(index)}
-										style={styles.button}
-									>
-										<Text style={position === index && styles.buttonSelected || styles.bullet}>•</Text>
+									<TouchableHighlight key={index} onPress={() => move(index)} style={styles.button}>
+										<Text style={(position === index && styles.buttonSelected) || styles.bullet}>
+											•
+										</Text>
 									</TouchableHighlight>
 								);
 							})}
 						</View>
 					)}
 				/>
-				<HouseInfoTabs house={this.state.house}/>
+				<HouseInfoTabs house={this.state.house} />
 			</View>
 		);
 	}
@@ -62,10 +66,10 @@ const styles = StyleSheet.create({
 		width: 'auto',
 		alignSelf: 'stretch'
 	},
-	slider: { 
+	slider: {
 		padding: 0,
 		margin: 0,
-		backgroundColor: '#333', 
+		backgroundColor: '#333',
 		height: 330,
 		flex: 0.5
 	},
@@ -97,7 +101,7 @@ const styles = StyleSheet.create({
 		fontSize: 48,
 		color: '#007F32'
 	},
-	customSlide: {		
+	customSlide: {
 		alignItems: 'center',
 		justifyContent: 'center'
 	},
