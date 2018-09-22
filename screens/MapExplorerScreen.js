@@ -29,6 +29,12 @@ export default class MapExplorerScreen extends React.Component {
 	}
 
 	static navigationOptions = ({navigation}) =>  {		
+		
+		let params = navigation.getParam('togglePanel');
+		if(!params) {
+			params = () => {};
+		}
+		
 		return {
 			headerTitle: 'Hello World',
 			headerTintColor: 'white',
@@ -39,7 +45,7 @@ export default class MapExplorerScreen extends React.Component {
 				fontWeight: 'bold'
 			},
 			headerRight: (
-				<Button onPress={navigation.getParam('togglePanel')}
+				<Button onPress={params}
 				title="Filter"
 				color="#007F32" />
 			)
