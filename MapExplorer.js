@@ -4,9 +4,20 @@ import { StyleSheet, Text, View, Button } from 'react-native';
 import { MapView,  } from 'expo';
 import { Marker } from 'react-native-maps';
 
+import PriceMarker from './PriceMarker'
+
 export const houseIcon = require('./assets/house.png');
 
 class MapExplorer extends React.Component {
+
+	constructor(props) {
+		super(props);
+	
+		this.state = {
+		  amount: 99,
+		};
+	  }
+
 	render() {
 		return (
             <MapView	
@@ -17,15 +28,12 @@ class MapExplorer extends React.Component {
 					latitudeDelta: 0.0922,
 					longitudeDelta: 0.0421
 				}}>
-				<Marker
-					coordinate={{
+				<Marker coordinate={{
 						latitude: 37.78825,
 						longitude: -122.4324,
-						title: 'Hello Sergii',
-						description: 'Hello Sergii World'
-					}}
-					image={houseIcon}
-				/>
+					}}>
+            		<PriceMarker amount={this.state.amount} />
+          		</Marker>				
 			</MapView>
 		);
 	}
