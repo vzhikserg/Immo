@@ -3,6 +3,11 @@ import { StyleSheet, Text, View, Button } from 'react-native';
 import { Col, Row, Grid } from "react-native-easy-grid";
 
 export default class SummaryTab extends React.Component {
+
+    constructor(props) {
+		super(props);		 
+	}
+
     render() {
         return (
             <View style={[styles.container, { backgroundColor: 'white' }]} >
@@ -12,7 +17,7 @@ export default class SummaryTab extends React.Component {
                             <Text style={styles.text}>Your current rent</Text>
                         </Col>
                         <Col>
-                            <Text style={[styles.text, { textDecorationLine: 'line-through', color: 'gray' }]}>870,22 EUR</Text>
+                            <Text style={[styles.text, { textDecorationLine: 'line-through', color: 'gray' }]}>870 EUR</Text>
                         </Col>
                     </Row>
                     <Row  style={styles.odd}>
@@ -20,7 +25,7 @@ export default class SummaryTab extends React.Component {
                             <Text style={styles.text}>Monthly loan rate</Text>
                         </Col>
                         <Col>
-                            <Text style={[styles.text, { color: 'green' }]}>898,50 EUR</Text>
+                            <Text style={[styles.text, { color: 'green' }]}>{this.props.house.price} EUR</Text>
                         </Col>
                     </Row>
                     <Row>

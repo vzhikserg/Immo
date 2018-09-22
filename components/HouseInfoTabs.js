@@ -19,8 +19,8 @@ export default class HouseInfoTabs extends React.Component {
     _handleIndexChange = index => this.setState({ index });
 
     _renderScene = SceneMap({
-      summary: SummaryTab,
-      details: DetailsTab,
+      summary: () => <SummaryTab house={this.props.house} />,
+      details: () => <DetailsTab house={this.props.house} />,
     });
 
     render() {

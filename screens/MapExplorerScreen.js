@@ -84,8 +84,8 @@ export default class MapExplorerScreen extends React.Component {
 			<View style={styles.container}>
 				<MapExplorer
 					style={styles.mapStyle}
-					onMarkerPress={() => {
-						this.props.navigation.navigate('HouseInfo');
+					onMarkerPress={(house) => {
+						this.props.navigation.navigate('HouseInfo', { house: house});
 					}}
 					houses={this.state.houses}
 				/>
