@@ -21,6 +21,7 @@ export class  HeaderTitle extends React.Component {
 	}
 }
 
+
 export default class MapExplorerScreen extends React.Component {
 	constructor(props) {
 		super(props);
@@ -38,7 +39,7 @@ export default class MapExplorerScreen extends React.Component {
 				fontWeight: 'bold'
 			},
 			headerRight: (
-				<Button onPress={ navigation.getParam('togglePanel')}
+				<Button onPress={navigation.getParam('togglePanel')}
 				title="Filter"
 				color="#007F32" />
 			)
