@@ -59,8 +59,8 @@ export default class MapExplorerScreen extends React.Component {
 	_getInitialState() {
 		return {
 			showFilterPanel: false,
-			houses: houses,
-			sliderValue: 850			
+			houses: houses.filter((house) => house.price < 1000),
+			sliderValue: 1000			
 		};
 	}
 
@@ -70,7 +70,6 @@ export default class MapExplorerScreen extends React.Component {
 
 	_toggleFilterPanel() {
 		this.setState({
-			...this.state,
 			showFilterPanel: !this.state.showFilterPanel
 		});
 	}
@@ -78,16 +77,14 @@ export default class MapExplorerScreen extends React.Component {
 	_change(value) {
 		this.setState(() => {
 		  return {
-			...this.state,
 			sliderValue: parseFloat(value),
+			houses: houses.filter((house) => house.price < parseFloat(value))
 		  };
-		});
+		});		
 	}
 
 	_renderOverlayPanel() {
 		
-		console.log(this.state);
-
 		if (!this.state.showFilterPanel) {
 			return null;
 		}
@@ -106,7 +103,9 @@ export default class MapExplorerScreen extends React.Component {
 					maximumTrackTintColor="#9bc31c"
 					minimumTrackTintColor="white"
 					style={styles.maxPriceSlider} 
-					step={100} maximumValue={1500} 
+					step={100} 
+					minimumValue={500}
+					maximumValue={1500} 
 					onValueChange={this._change.bind(this)} 
 					value={sliderValue} />					
 					
