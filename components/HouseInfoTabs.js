@@ -1,27 +1,16 @@
 import * as React from 'react';
-import { View, StyleSheet, Dimensions, Text } from 'react-native';
+import { StyleSheet, Dimensions, Text } from 'react-native';
 import { TabView, TabBar, SceneMap } from 'react-native-tab-view';
-import { Constants } from 'expo';
 
-const FirstRoute = () => (
-  <View style={[styles.container, { backgroundColor: '#ff4081' }]} ><Text>Hell1</Text></View>
-);
-
-const SecondRoute = () => (
-  <View style={[styles.container, { backgroundColor: '#673ab7' }]} ><Text>Hell2</Text></View>
-);
-
-const initialLayout = {
-    height: 0,
-    width: Dimensions.get('window').width,
-  };
+import SummaryTab from './SummaryTab'
+import DetailsTab from './DetailsTab';
 
 export default class HouseInfoTabs extends React.Component {
   state = {
     index: 0,
     routes: [
-      { key: 'first', title: 'First' },
-      { key: 'second', title: 'Second' },
+      { key: 'summary', title: 'Summary' },
+      { key: 'details', title: 'Details' },
     ],
   };
 
@@ -30,8 +19,8 @@ export default class HouseInfoTabs extends React.Component {
     _handleIndexChange = index => this.setState({ index });
 
     _renderScene = SceneMap({
-      first: FirstRoute,
-      second: SecondRoute,
+      summary: SummaryTab,
+      details: DetailsTab,
     });
 
     render() {
@@ -44,7 +33,7 @@ export default class HouseInfoTabs extends React.Component {
           onIndexChange={this._handleIndexChange}
           initialLayout={{
             width: Dimensions.get('window').width,
-            height: 100
+            height: 0
           }}
         />
       );
@@ -56,7 +45,7 @@ export default class HouseInfoTabs extends React.Component {
       flex: 1,
     },
     header: {
-      paddingTop: 300,
+      paddingTop: 0,
     },
     tabbar: {
       backgroundColor: '#3f51b5',
