@@ -124,6 +124,7 @@ const styles = StyleSheet.create({
 	},
 	topBarButton: {
 		color: '#ff0000',
+		width: '100%',
 		backgroundColor: '#007F32'
 	},
 	text: {
