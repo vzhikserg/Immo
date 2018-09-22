@@ -14,8 +14,8 @@ export class  HeaderTitle extends React.Component {
 	}
 	render() {
 		return (
-			<View style={{flex: 1, justifyContent: 'space-between', flexDirection: 'row'}}>
-				<Text>ImmoAgent</Text>				
+			<View style={{flex: 1, flexDirection: 'row', paddingLeft: 12}}>
+				<Text style={{ color: 'white', fontSize: 24, paddingLeft: 40, textAlign: 'center', width: '100%'}}>Immo Agent</Text>								
 			</View>
 		);
 	}
@@ -34,9 +34,9 @@ export default class MapExplorerScreen extends React.Component {
 		if(!params) {
 			params = () => {};
 		}
-		
+
 		return {
-			headerTitle: 'Hello World',
+			headerTitle: <HeaderTitle />,
 			headerTintColor: 'white',
 			headerStyle: {
 				backgroundColor: '#007F32',			
@@ -59,7 +59,8 @@ export default class MapExplorerScreen extends React.Component {
 	_getInitialState() {
 		return {
 			showFilterPanel: false,
-			houses: houses
+			houses: houses,
+			sliderValue: 850			
 		};
 	}
 
@@ -91,23 +92,23 @@ export default class MapExplorerScreen extends React.Component {
 			return null;
 		}
 
-		const {value} = this.state;
+		const {sliderValue} = this.state;
 
 		return (
 			<View style={styles.filterPanel}>
 				<OverlayPanel>	
-					<View>
-						<Text style={styles.maxPriceLabel}>Maximum Price:</Text>
-						<Text style={styles.maxPriceLabel}>€ 950,-</Text>
+					<View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-between'}}>
+						<Text style={styles.maxPriceLabel}>Maximum Rate:</Text>
+						<Text style={styles.maxPriceLabel}>€ {sliderValue}</Text>
 					</View>				
 					<Slider 
 					thumbTintColor="#9bc31c"
 					maximumTrackTintColor="#9bc31c"
 					minimumTrackTintColor="white"
 					style={styles.maxPriceSlider} 
-					step={100} maximumValue={950} 
+					step={100} maximumValue={1500} 
 					onValueChange={this._change.bind(this)} 
-					value={value} />					
+					value={sliderValue} />					
 					
 				</OverlayPanel>
 			</View>
@@ -177,7 +178,8 @@ const styles = StyleSheet.create({
 	},
 	maxPriceLabel: {
 		color: '#fff',
-		marginTop: 10
+		marginTop: 10,
+		fontWeight: 'bold'
 	},
 	filterPanel: {
 		position: 'absolute',
