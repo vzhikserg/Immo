@@ -43,7 +43,7 @@ class HouseInfo extends React.Component {
                     style={styles.button}
                   >
                     <Text style={position === index && styles.buttonSelected}>
-                      {index + 1}
+                      o
                     </Text>
                   </TouchableHighlight>
                 );
@@ -80,11 +80,11 @@ const styles = StyleSheet.create({
 	  height: 15,
 	  opacity: 0.9,
 	  alignItems: 'center',
-	  justifyContent: 'center',
+	  justifyContent: 'center',	  
 	},
 	buttonSelected: {
 	  opacity: 1,
-	  color: 'red',
+	  color: 'red',	  
 	},
 	customSlide: {
 	  backgroundColor: 'green',
