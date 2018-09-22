@@ -9,7 +9,7 @@ export default class HouseInfoTabs extends React.Component {
   state = {
     index: 0,
     routes: [
-      { key: 'summary', title: 'Summary' },
+      { key: 'summary', title: 'Summary',  },
       { key: 'details', title: 'Details' },
     ],
   };
@@ -31,6 +31,7 @@ export default class HouseInfoTabs extends React.Component {
           renderScene={this._renderScene}
           renderTabBar={this._renderTabBar}
           onIndexChange={this._handleIndexChange}
+          style={styles.tab}
           initialLayout={{
             width: Dimensions.get('window').width,
             height: 0
@@ -46,15 +47,16 @@ export default class HouseInfoTabs extends React.Component {
     },
     header: {
       paddingTop: 0,
+      backgroundColor: '#007F32'
     },
     tabbar: {
-      backgroundColor: '#3f51b5',
+      backgroundColor: 'red',
     },
-    tab: {
-      width: 120,
+    tab: {      
+      backgroundColor: 'pink'
     },
     indicator: {
-      backgroundColor: '#ffeb3b',
+      backgroundColor: 'red',
     },
     label: {
       color: '#fff',
