@@ -14,7 +14,7 @@ class MapExplorer extends React.Component {
 		super(props);
 	
 		this.state = {
-		  amount: 99,
+		  amount: 100,
 		};
 	  }
 
