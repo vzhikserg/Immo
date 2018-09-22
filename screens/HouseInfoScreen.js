@@ -11,10 +11,9 @@ class HouseInfo extends React.Component {
 		};
 	}
 
-	render() {
-		console.log(this.state)
+	render() {		
 		return (
-      <View style={styles.container}>
+      		<View style={styles.container}>
 				<Text>Hopala</Text>
 				<HouseInfoTabs />
 			</View>
