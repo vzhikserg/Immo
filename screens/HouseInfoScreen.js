@@ -5,17 +5,12 @@ import ImageSlider from 'react-native-image-slider';
 
 class HouseInfo extends React.Component {
 	static navigationOptions =({navigation}) => ({
-        headerTitle: "Villa Nuova"
+        headerTitle: navigation.getParam('house').name
 	})
 	// navigation.getParam('name')
-
 	
 	constructor(props) {
 		super(props);
-
-		this.state = {
-			amount: 99
-		};
 	}
 
 	render() {

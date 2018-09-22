@@ -13,7 +13,6 @@ class MapExplorer extends React.Component {
 
 	constructor(props) {
 		super(props);
-        this.state = {amount: 99};
 	}
 
 	render() {
@@ -30,7 +29,7 @@ class MapExplorer extends React.Component {
 				{
 					this.props.houses.map(house => 
 					<Marker key={house.key} 
-						onPress= { house.onMarkerPress}
+						onPress= { () => this.props.onMarkerPress(house)}
 						coordinate={{
 						latitude: house.location.latitude,
 						longitude: house.location.longitude,
