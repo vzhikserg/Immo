@@ -14,7 +14,7 @@ class HouseInfo extends React.Component {
 	render() {
 		console.log(this.state)
 		return (
-      <View>
+      <View style={styles.container}>
 				<Text>Hopala</Text>
 				<HouseInfoTabs />
 			</View>
