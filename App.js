@@ -1,17 +1,32 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, Text, View, Button, Alert } from 'react-native';
 import MapExplorer from './MapExplorer';
 
 export default class App extends React.Component {
+
+  constructor() {
+    super();
+    
+  }
+
+  _click() {
+    Alert.alert('Sergiiiiiiiiiiiiii');
+  }
+
   render() {
+
+
+
     return (
       <View style={styles.container}>        
         <MapExplorer style={styles.mapStyle}></MapExplorer>
         <View style={styles.topBar}>
-          <Button color="#007F32" title="MENU" style={styles.topBarButton}></Button>         
+          <Button onPress={() => this._click()} color="#007F32" title="MENU" style={styles.topBarButton}></Button>         
         </View>
       </View>
+
     );
+
   }
 }
 
@@ -27,7 +42,8 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     alignItems: 'flex-end',
     position: 'absolute',
-    paddingRight: 16,
+    paddingRight: 16    
+    
   },
   topBarButton: {
     color: '#ff0000',
