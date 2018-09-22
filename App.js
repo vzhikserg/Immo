@@ -7,7 +7,7 @@ const AppNavigator = createStackNavigator({
   MapExplorer: MapExplorerScreen,
   HouseInfo: HouseInfoScreen,
 }, {
-  initialRouteName: 'MapExplorer'
+  initialRouteName: 'MapExplorer',  
 })
 
 export default class App extends React.Component {

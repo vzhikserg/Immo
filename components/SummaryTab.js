@@ -15,7 +15,7 @@ export default class SummaryTab extends React.Component {
                             <Text style={[styles.text, { textDecorationLine: 'line-through', color: 'gray' }]}>870,22 EUR</Text>
                         </Col>
                     </Row>
-                    <Row>
+                    <Row  style={styles.odd}>
                         <Col>
                             <Text style={styles.text}>Monthly loan rate</Text>
                         </Col>
@@ -31,7 +31,7 @@ export default class SummaryTab extends React.Component {
                             <Text style={styles.text}>300 months</Text>
                         </Col>
                     </Row>
-                    <Row>
+                    <Row  style={styles.odd}>
                         <Col>
                             <Text style={styles.text}>Daily sunshine</Text>
                         </Col>
@@ -47,7 +47,7 @@ export default class SummaryTab extends React.Component {
                             <Text style={styles.text}>5 minutes</Text>
                         </Col>
                     </Row>
-                    <Row>
+                    <Row  style={styles.odd}>
                         <Col>
                             <Text style={styles.text}>Bus lines</Text>
                         </Col>
@@ -62,13 +62,16 @@ export default class SummaryTab extends React.Component {
                                 onPress={() => { }}
                                 title="Add bookmark"
                                 style={styles.button}
+                                color="#007F32"
                                 accessibilityLabel="Add this house to your bookmarks"
                             />
                         </Col>
                         <Col>
                             <Button
+                                color="#007F32"
                                 onPress={() => { }}
                                 style={styles.button}
+                                borderRadius={0}
                                 title="Request offer"
                                 accessibilityLabel="Click this button to request the offer from the bank"
                             />
@@ -84,10 +87,17 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
     },
+    odd: {
+      backgroundColor: '#eee'
+    },
     text: {
-        fontSize: 20
+        fontSize: 12,
+        paddingLeft: 24,
+        paddingBottom: 12,
+        paddingTop: 12   
     },
     button: {
-        color: "#007F32"
+        padding: 24,
+        borderRadius: 0
     }
 })
