@@ -11,13 +11,17 @@ export default class SummaryTab extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            isModalBookmarkVisible: false
+            isModalBookmarkVisible: false,
+            isModalOfferVisible: false
         };
 
     }
 
     _toggleBookmarkModal = () =>
         this.setState({ isModalBookmarkVisible: !this.state.isModalBookmarkVisible });
+    
+    _toggleOfferModal = () =>
+        this.setState({ isModalOfferVisible: !this.state.isModalOfferVisible });
 
     render() {
         return (
@@ -85,7 +89,7 @@ export default class SummaryTab extends React.Component {
                         <Col>
                             <Button
                                 color="#007F32"
-                                onPress={() => { }}
+                                onPress={() => { this._toggleOfferModal(); }}
                                 style={styles.button}
                                 borderRadius={0}
                                 title="Request offer"
@@ -98,6 +102,17 @@ export default class SummaryTab extends React.Component {
                     <View style={styles.modalContent}>
                         <Text>We saved this bookmark for you</Text>
                         <TouchableOpacity onPress={this._toggleBookmarkModal}>
+                            <View style={styles.buttonModal}>
+                                <Text style={{color:'white'}}>CLOSE</Text>
+                            </View>
+                        </TouchableOpacity>
+                    </View>
+                </Modal>
+
+                <Modal style={styles.bottomModal} isVisible={this.state.isModalOfferVisible}>
+                    <View style={styles.modalContent}>
+                        <Text>We notified the agent and you will hear from us soon</Text>
+                        <TouchableOpacity onPress={this._toggleOfferModal}>
                             <View style={styles.buttonModal}>
                                 <Text style={{color:'white'}}>CLOSE</Text>
                             </View>
