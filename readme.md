@@ -11,3 +11,8 @@ We invested in user experience, which is definitely key for this project. The us
 
 ![alt text](images/app-animation.gif "Immo Agent Android App")
 
+### List of developers
+* Rafael Jonach
+* Sergii Zhevzhyk
+* Sven Graziani
+* Thorsten Dalmatiner
