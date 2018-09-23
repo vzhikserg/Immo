@@ -11,8 +11,28 @@ We invested in user experience, which is definitely key for this project. The us
 
 ![alt text](images/app-animation.gif "Immo Agent Android App")
 
+### Expo Link
+You can preview/test the demo Application on the Expo platform. [https://expo.io/@svengraziani/immoagent](https://expo.io/@svengraziani/immoagent)
+
+
 ### List of developers
 * Rafael Jonach
 * Sergii Zhevzhyk
 * Sven Graziani
 * Thorsten Dalmatiner
+
+
+### Technology Stack
+* Application: __React Native__
+* Sketch
+* Brain Power :D
+* Coffee
+
+#### Some pics from the hackathon: @HackTheAlps
+
+![alt text](images/react-native.jpg "React Native: Sergii Zhevzhyk, Sven Graziani")
+
+![alt text](images/team.jpg "Sergii Zhevzhyk, Throsten Dalmatiner, Rafael Jonach")
+
+![alt text](images/alps.jpg "Sergii Zhevzhyk")
+Kronplatz @SouthTirol
